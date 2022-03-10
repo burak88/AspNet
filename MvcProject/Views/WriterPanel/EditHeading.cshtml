@@ -1,0 +1,25 @@
+﻿@model EntityLayer.Concrete.Heading
+@{
+    ViewBag.Title = "EditHeading";
+    Layout = "~/Views/Shared/_WriterPanel.cshtml";
+}
+
+<h2>Başlık Detayları Güncellem</h2>
+@using (Html.BeginForm("EditHeading", "WriterPanel", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.HeadingId)
+        @Html.HiddenFor(x => x.WriterId)
+        @Html.HiddenFor(x => x.HeadingDate)
+        @Html.HiddenFor(x => x.HeadingStatus)
+        @Html.Label("Başlık Adı")
+        @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Kategori Adı")
+        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.ctg, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-warning"> Değişiklikleri Kaydet</button>
+
+
+    </div>
+}
